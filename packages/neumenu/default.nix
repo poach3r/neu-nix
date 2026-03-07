@@ -1,10 +1,13 @@
 {
   stdenv,
   fetchFromSourcehut,
-  lib,
   pkg-config,
-  wld,
+  neuwld,
+  neuswc,
   wayland-protocols,
+  wayland-scanner,
+  wayland,
+  pixman,
   fontconfig,
   libxkbcommon,
 }:
@@ -15,19 +18,22 @@ stdenv.mkDerivation {
     owner = "~uint";
     repo = "neumenu";
     rev = "88d0bd8bb47a3bea4e806087b4be95af226d5bb3";
-    hash = lib.fakeHash;
+    hash = "sha256-oASly6REP1EGV8jBROMZJR+Q8TrkVNKga4Yub37xjxo=";
   };
 
   nativeBuildInputs = [
     pkg-config
+    wayland-scanner
   ];
 
   buildInputs = [
     wayland-protocols
-    wld
+    wayland
+    neuwld
     libxkbcommon
     fontconfig
+    pixman
   ];
 
-  makeFlags = ["PREFIX=$(out)"];
+  makeFlags = ["PREFIX=$(out)" "SWCPROTO=${neuswc}/share/swc/swc.xml"];
 }

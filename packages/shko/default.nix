@@ -12,7 +12,6 @@
   zig,
   neuswc,
   neuwld,
-  lib,
 }:
 
 stdenv.mkDerivation {
@@ -21,13 +20,11 @@ stdenv.mkDerivation {
   src = fetchFromCodeberg {
     owner = "chld";
     repo = "shko";
-    rev = "4b895b42a22be7aa918fbc5f2cd01eb0424fc7cf";
-    hash = lib.fakeHash;
+    rev = "e72377af2bc7a7fa309a8205af8d0e01943dcbd7";
+    hash = "sha256-z+/UPQxpmPfyxMt2Cr50u+rLK8VQZHrO3oPE2hEvGwg=";
   };
 
   nativeBuildInputs = [ zig.hook ];
-
-  # zigBuildFlags = [ "release ];
   dontSetZigDefaultFlags = true;
 
   buildInputs = [
