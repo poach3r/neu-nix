@@ -9,5 +9,5 @@ let
   });
 in
 {
-  inherit (scope) wld swc shko;
+  inherit (scope) neuwld neuswc neumenu shko hevel;
 }
