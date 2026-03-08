@@ -11,8 +11,20 @@ let
     swclock = self.callPackage ./swclock { };
     swiv = self.callPackage ./swiv { };
     mojito = self.callPackage ./mojito { };
+    hst = self.callPackage ./hst { };
   });
 in
 {
-  inherit (scope) neuwld neuswc neumenu shko hevel swall hack swclock swiv mojito;
+  inherit (scope)
+    neuwld
+    neuswc
+    neumenu
+    shko
+    hevel
+    swall
+    hack
+    swclock
+    swiv
+    mojito
+    hst;
 }
