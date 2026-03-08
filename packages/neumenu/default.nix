@@ -13,7 +13,7 @@
 }:
 stdenv.mkDerivation {
   pname = "neumenu";
-  version = "0.0";
+  version = "4.6";
   src = fetchFromSourcehut {
     owner = "~uint";
     repo = "neumenu";

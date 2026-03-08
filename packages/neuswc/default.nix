@@ -7,7 +7,7 @@
   wayland,
   wayland-protocols,
   pixman,
-  libudev0-shim,
+  udev,
   libxkbcommon,
   fontconfig,
   libinput,
@@ -40,7 +40,7 @@ stdenv.mkDerivation {
     wayland-protocols
     pixman
     libdrm
-    libudev0-shim
+    udev
     libxkbcommon
     fontconfig
     libinput
@@ -55,5 +55,10 @@ stdenv.mkDerivation {
 
   CFLAGS = "-I${libdrm.dev}/include/libdrm"; # Uncomment this line to fix compilation error
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+    "INPUT_BACKEND=libinput"
+    "ENABLE_LIBUDEV=1"
+    "ENABLE_XWAYLAND=1"
+  ];
 }
