@@ -13,7 +13,7 @@
   zig,
   neuswc,
   neuwld,
-  config ? null,
+  configZig ? null,
 }:
 
 stdenv.mkDerivation {
@@ -48,9 +48,9 @@ stdenv.mkDerivation {
 
   postPatch =
     let
-      configFile =
-        if lib.isDerivation config || builtins.isPath config then config else writeText "config.zig" config;
+      configZigFile =
+        if lib.isDerivation configZig || builtins.isPath configZig then configZig else writeText "config.zig" configZig;
     in
-    lib.optionalString (config != null)  "cp ${configFile} config.zig";
+    lib.optionalString (configZig != null)  "cp ${configZigFile} config.zig";
 
 }
