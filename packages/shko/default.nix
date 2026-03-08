@@ -5,7 +5,6 @@
   libdrm,
   wayland,
   libinput,
-  libudev0-shim,
   libxkbcommon,
   libxcb,
   libxcb-wm,
@@ -33,7 +32,6 @@ stdenv.mkDerivation {
     pixman
     neuswc
     neuwld
-    libudev0-shim
     wayland
     libxkbcommon
     libxcb
