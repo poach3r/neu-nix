@@ -51,6 +51,4 @@ stdenv.mkDerivation {
   makeFlags = [
     "PREFIX=$(out)"
   ];
-
-  PKG_CONFIG_PATH = "${neuswc}/lib/pkgconfig:$PKG_CONFIG_PATH";
 }
