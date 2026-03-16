@@ -28,5 +28,13 @@
         in
         import ./. { inherit pkgs; }
       );
+
+      devShell = forAllSystems (
+        system:
+        let
+          callPackage = nixpkgs.legacyPackages.${system}.callPackage;
+        in
+        callPackage ./shell.nix { }
+      );
     };
 }
