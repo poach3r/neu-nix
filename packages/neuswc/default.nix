@@ -16,7 +16,7 @@
   libxcb-wm,
   stdenv,
   fetchFromSourcehut,
-  patches ? [],
+  patches ? [ ],
 }:
 stdenv.mkDerivation {
   pname = "neuswc";
