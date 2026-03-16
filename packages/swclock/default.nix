@@ -42,13 +42,13 @@ stdenv.mkDerivation {
 
     mkdir -p $out/bin/
     install -m 755 swclock $out/bin/
-    
+
     runHook postInstall
   '';
 
   meta = {
     description = "xclock-like analog clock program for wayland, using neuwld";
     homePage = "https://git.sr.ht/~shrub900/swclock";
-    mainProgram = "swclock"
+    mainProgram = "swclock";
   };
 }
