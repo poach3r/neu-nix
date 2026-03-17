@@ -28,6 +28,7 @@ let
     swiv = self.callPackage ./swiv { };
     mojito = self.callPackage ./mojito { };
     hst = self.callPackage ./hst { };
+    dwc = wrapWithSwcLaunch self.neuswc (self.callPackage ./dwc { });
   });
 in
 {
@@ -43,5 +44,6 @@ in
     swiv
     mojito
     hst
+    dwc
     ;
 }
