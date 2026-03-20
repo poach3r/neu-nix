@@ -26,6 +26,7 @@ let
     hevel = wrapWithSwcLaunch self.neuswc (self.callPackage ./hevel { });
     shko = wrapWithSwcLaunch self.neuswc (self.callPackage ./shko { });
     wsxwm = wrapWithSwcLaunch self.neuswc (self.callPackage ./wsxwm { });
+    tohu = wrapWithSwcLaunch self.neuswc (self.callPackage ./tohu { });
     swall = self.callPackage ./swall { };
     hack = self.callPackage ./hack { };
     swclock = self.callPackage ./swclock { };
@@ -48,5 +49,6 @@ in
     mojito
     hst
     wsxwm
+    tohu
     ;
 }
