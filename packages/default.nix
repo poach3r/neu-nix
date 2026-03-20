@@ -25,6 +25,7 @@ let
     neumenu = self.callPackage ./neumenu { };
     hevel = wrapWithSwcLaunch self.neuswc (self.callPackage ./hevel { });
     shko = wrapWithSwcLaunch self.neuswc (self.callPackage ./shko { });
+    wsxwm = wrapWithSwcLaunch self.neuswc (self.callPackage ./wsxwm { });
     swall = self.callPackage ./swall { };
     hack = self.callPackage ./hack { };
     swclock = self.callPackage ./swclock { };
@@ -46,5 +47,6 @@ in
     swiv
     mojito
     hst
+    wsxwm
     ;
 }
