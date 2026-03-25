@@ -28,8 +28,8 @@ stdenv.mkDerivation {
   src = fetchFromSourcehut {
     owner = "~shrub900";
     repo = "neuswc";
-    rev = "bf9503ad5088c14dd175c95b7cd298e8bfe23976";
-    hash = "sha256-ue1z/dabHgcWXDq1ahJPrH6IxbsSDUbPtfDYWLBULWQ=";
+    rev = "9c75f09d262ec03a1aa381184b4710172fb75c75";
+    hash = "sha256-YkPcKDIIzS+NtX+NHRYzXHAss99BMS2uAbiFitWqTXE=";
   };
 
   nativeBuildInputs = [
@@ -57,7 +57,14 @@ stdenv.mkDerivation {
     libxcb-wm
   ];
 
+  mesonAutoFeatures = "auto";
+
   inherit patches;
+
+  postInstall = ''
+    mkdir -p $out/include
+    wayland-scanner client-header $src/protocol/swc.xml $out/include/swc-client-protocol.h
+  '';
 
   meta = {
     description = "Fork of swc for hevel window manager";

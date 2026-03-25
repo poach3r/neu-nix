@@ -15,6 +15,9 @@ The packages this flake currently provides are:
 - `swiv`
 - `mojito`
 - `hst`
+- `tohu`
+- `neuwm`
+- `wsxwm`
 
 ### Compositors
 You can use the compositors in this flake in two ways. If you add neuswc to your system packages, you can launch them with swc-launch:
@@ -67,6 +70,29 @@ Alternatively, you can use the flake's overlay:
 ```
 
 Take a look [here](https://wayland.fyi/) for information about the packages, what they are and how to use them.
+
+### Configuring
+Configuration can be done by overriding the package and passing in either a path to a config file, a derivation or just write the config inline.
+For example to configure shko you can either do:
+
+```nix
+pkgs.shko.override {
+  configZig = ''
+    pub const terminal = "st-wl";
+    pub const menu = "neumenu_run";
+  '';
+}
+```
+
+or:
+
+```nix
+pkgs.shko.override {
+  configZig = ./path/to/config.zig;
+}
+```
+
+Take a look at the default.nix file for the specific package you want to configure to see what argument is expected for the config.
 
 ### Contribute
 Make a pull request with the package you want to contribute. Again, take a look [here](https://wayland.fyi/) for a list of packages that could be added here.
