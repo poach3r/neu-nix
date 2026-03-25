@@ -6,6 +6,7 @@
   pkg-config,
   pixman,
   neuwld,
+  libdrm,
   fontconfig,
 }:
 stdenv.mkDerivation {
@@ -29,12 +30,24 @@ stdenv.mkDerivation {
     wayland
     neuwld
     fontconfig
+    libdrm
   ];
 
   makeFlags = [
     "DESTDIR=$(out)"
     "BINDIR=/bin"
   ];
+
+  postPatch = ''
+    substituteInPlace Makefile \
+      --replace-fail \
+        "PKG_CFLAGS != \$(PKG_CONFIG) --cflags wayland-client pixman-1 2>/dev/null || :" \
+        "PKG_CFLAGS != \$(PKG_CONFIG) --cflags wayland-client pixman-1 wld 2>/dev/null || :"\
+      --replace-fail \
+        "PKG_LIBS != \$(PKG_CONFIG) --libs wayland-client pixman-1 2>/dev/null || :" \
+        "PKG_LIBS != \$(PKG_CONFIG) --libs wayland-client pixman-1 wld 2>/dev/null || :" \
+      --replace-fail "LDLIBS += -L.. -lwld" "LDLIBS += -L.."
+  '';
 
   meta = {
     description = "A simple wayland image viewer";
